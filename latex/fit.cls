@@ -1,3 +1,4 @@
+% bazirano na FER
 % LaTeX predložak za pismene radove na
 % Fakultetu elektrotehnike i računarstva.
 % Verzija: 1.0
@@ -16,7 +17,7 @@
 %  - numeric - stil citiranja ``[broj]''
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fer}
+\ProvidesClass{fit}
 
 % Predefinirane vrijednosti opcija
 \newif\if@fontlmodern		\global\@fontlmoderntrue
@@ -248,14 +249,19 @@
 }
 
 \if@radseminar%
-  \def\voditelj#1{\gdef\@voditelj{#1}}
-  \def\@voditelj{\@latex@warning@no@line{Voditelj nije naveden.
-  Koristi \noexpand\voditelj za definiranje}}
+  \def\mentor#1{\gdef\@mentor{#1}}
+  \def\@mentor{\@latex@warning@no@line{Mentor nije naveden.
+  Koristi \noexpand\mentor za definisanje}}
 \else%
   \def\thesisnumber#1{\gdef\@thesisnumber{#1}}
-  \def\@thesisnumber{\@latex@warning@no@line{Broj rada nije definiran.
-  Koristi \noexpand\thesisnumber za definiranje}}
+  \def\@thesisnumber{\@latex@warning@no@line{Broj rada nije definisan.
+  Koristi \noexpand\thesisnumber za definisanje}}
 \fi
+
+\def\brindex#1{\gdef\@brindex{#1}}
+  \def\@brindex{\@latex@warning@no@line{Broj indeksa nije naveden.
+  Koristi \noexpand\brindex za definisanje}}
+
 
 \if@titlepage
 	\renewcommand\maketitle{%
@@ -264,9 +270,9 @@
 		\let\footnoterule\relax
 	
 		\begin{center}
-			{\large\sffamily SVEU\v{C}ILI\v{S}TE U ZAGREBU}
+			{\large\sffamily UNIVERZITET D\v{Z}EMAL BIJEDIĆ U MOSTARU}
 			
-			{\large\bfseries\sffamily FAKULTET ELEKTROTEHNIKE I RA\v{C}UNARSTVA}
+			{\large\bfseries\sffamily FAKULTET INFORMACIJSKIH TEHNOLOGIJA MOSTAR}
 		\end{center}
 		\vfill
 		\begin{center}%
@@ -284,8 +290,8 @@
 			{\large\sffamily\lineskip .75em%
 			\begin{tabular}[t]{c}%
 	        	\if@radseminar%
-	        	  {\itshape \@author} \\
-	        	  Voditelj: {\itshape \@voditelj}
+	        	  {\itshape \@author, \@brindex} \\
+	        	  Mentor: {\itshape \@mentor}
 	        	\else
 				    \@author
 				\fi
@@ -293,11 +299,11 @@
 		\end{center}\par
 		\vfill
 		\begin{center}
-			{\sffamily\large Zagreb, 
+			{\sffamily\large Mostar, 
 			\ifcase\month\or
-				sije\v{c}anj\or velja\v{c}a\or o\v{z}ujak\or travanj\or svibanj\or
-	   	 		lipanj\or srpanj\or kolovoz\or rujan\or listopad\or studeni\or
-	    			prosinac\fi \space \number\year.%
+				januar\or februar\or mart\or april\or maj\or juni\or juli\or avgust\or septembar\or
+                oktobar\or novembar\or decembar
+            \fi \space \number\year.%
 	    	}
 		\end{center}
 	\end{titlepage}%
@@ -332,8 +338,8 @@
 % Naredba \engl
 \newcommand{\engl}[1]{(engl.~\emph{#1})}
 
-% Sažetak na hrvatskom
-\newenvironment{sazetak}
+% Rezime na bosnaskom
+\newenvironment{rezime}
 {
 \newpage
 \vspace*{\fill}
@@ -341,14 +347,14 @@
 \begin{center}
   {\bf \@title}
 \end{center}
-\hspace*{\fill} {\bf Sa\v{z}etak} \hspace*{\fill} \par
+\hspace*{\fill} {\bf Rezime \hspace*{\fill} \par
 \vspace*{25pt}
 }
 {
 \vspace*{\fill}
 }
 
-% Ključne riječi na hrvatskom
+% Ključne riječi na bosanskom
 \newcommand{\kljucnerijeci}[1]
 {
 \vspace{15pt}

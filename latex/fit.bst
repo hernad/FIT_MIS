@@ -1,14 +1,18 @@
+%% bazirano na:
+%% --------------------------------------------------
 %% File: `fer.bst'
 %% A translation of `plainnat.bst' in Croatian 
 %%
 %% Copyright 2010 Ivan Krišto
 %% E-mail: ivan.kristo@gmail.com
+%% ---------------------------------------------------
 %%
 %% This program can be redistributed and/or modified under the terms
 %% of the LaTeX Project Public License Distributed from CTAN
 %% archives in directory macros/latex/base/lppl.txt; either
 %% version 1 of the License, or any later version.
 %%
+%% 
  % BibTeX `plainnat' family
  %   version 0.99b for BibTeX versions 0.99a or later,
  %   for LaTeX versions 2.09 and 2e.
@@ -990,29 +994,29 @@ FUNCTION {unpublished}
 FUNCTION {default.type} { misc }
 
 
-MACRO {jan} {"Sije\v{c}anj"}
+MACRO {jan} {"Januar"}
 
-MACRO {feb} {"Velja\v{c}a"}
+MACRO {feb} {"Februar"}
 
-MACRO {mar} {"O\v{z}ujak"}
+MACRO {mar} {"Mart"}
 
-MACRO {apr} {"Travanj"}
+MACRO {apr} {"April"}
 
-MACRO {may} {"Svibanj"}
+MACRO {may} {"Maj"}
 
-MACRO {jun} {"Lipanj"}
+MACRO {jun} {"Juni"}
 
-MACRO {jul} {"Srpanj"}
+MACRO {jul} {"Juli"}
 
-MACRO {aug} {"Kolovoz"}
+MACRO {aug} {"Avgust"}
 
-MACRO {sep} {"Rujan"}
+MACRO {sep} {"Septembar"}
 
-MACRO {oct} {"Listopad"}
+MACRO {oct} {"Oktobar"}
 
-MACRO {nov} {"Studeni"}
+MACRO {nov} {"Novembar"}
 
-MACRO {dec} {"Prosinac"}
+MACRO {dec} {"Decembar"}
 
 
 
