@@ -302,10 +302,10 @@
 			{\large\sffamily\lineskip .75em%
 			\begin{tabular}[t]{c}%
 	        	\if@radseminar%
-	        	  {\itshape \@author, \@brindex} \\
+	        	  Student: {\itshape \@author, \@brindex} \\
 	        	  Mentor: {\itshape \@mentor} \\
                        \\
-                  ver: {\itshape \@verzija}
+                  ver: \@verzija
 	        	\else
 				    \@author
 				\fi

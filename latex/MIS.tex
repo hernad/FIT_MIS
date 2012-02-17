@@ -3,10 +3,8 @@
 
 \begin{document}
 
-% TODO: Navedite naslov rada.
 \title{Open source Business Intelligence}
 
-% TODO: Navedite vaše ime i prezime.
 \author{Ernad Husremović}
 \brindex{DL 2792}
 \verzija {1.9.0}
@@ -23,12 +21,40 @@
 
 \subsection{ETL}
 
+Cleansing
+
 
 \subsection{datamart vs datawarehouse}
 
-'Datamart' sadrži informacije o jednom dijelu organizacije (npr. prodaja, ljudski resursi), dok 'datawarehouse' sadrži informacije iz više područja -  obrađuje organizaciju globalno. 
+'Data mart' sadrži informacije o jednom dijelu organizacije (npr. prodaja, ljudski resursi), dok 'datawarehouse' sadrži informacije iz više područja -  obrađuje organizaciju globalno. 
 
-'Datawarehouse' je stoga usmjeren na podršku 'top' menadžmenta, dok 'datamart' obezbjeđuje informacije za upravljanje i operativno planiranje pojedinih dijelova organizacije  \cite[str.~391]{pentaho32}.
+'Data warehouse' je stoga usmjeren na podršku 'top' menadžmenta, dok 'datamart' obezbjeđuje informacije za upravljanje i operativno planiranje pojedinih dijelova organizacije  \cite[str.~391]{pentaho32}.
+
+dimension table
+
+facts table
+
+SCD slow changing dimension
+\begin{itemize}
+  \item Type I
+  \item Type II
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=14cm]{img/F18_olap.pdf}
+\caption{OLAP schema}
+\end{figure}
+
+
+Pentaho
+
+Pentaho: analysis multidimensional, reporting, dashboards (key performance indicators) \cite[str.~7]{pentaho32}.
+
+Spoon
+
+data mining weka ?
+
 
 \subsection{dimension table}
 
