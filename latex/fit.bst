@@ -1,3 +1,7 @@
+%% Podesio za FIT: hernad@bring.out.ba
+%% februar 2012
+%%
+%%
 %% bazirano na:
 %% --------------------------------------------------
 %% File: `fer.bst'

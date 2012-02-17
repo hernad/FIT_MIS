@@ -1,3 +1,9 @@
+% Podesio za FIT: hernad@bring.out.ba
+% februar 2012
+%
+%
+%
+%
 % bazirano na FER
 % LaTeX predložak za pismene radove na
 % Fakultetu elektrotehnike i računarstva.
@@ -263,6 +269,12 @@
   Koristi \noexpand\brindex za definisanje}}
 
 
+\def\verzija#1{\gdef\@verzija{#1}}
+  \def\@brindex{\@latex@warning@no@line{Verzija dokumenta nije navedna.
+  Koristi \noexpand\verzija za definisanje}}
+
+
+
 \if@titlepage
 	\renewcommand\maketitle{%
 	\begin{titlepage}%
@@ -291,7 +303,9 @@
 			\begin{tabular}[t]{c}%
 	        	\if@radseminar%
 	        	  {\itshape \@author, \@brindex} \\
-	        	  Mentor: {\itshape \@mentor}
+	        	  Mentor: {\itshape \@mentor} \\
+                       \\
+                  ver: {\itshape \@verzija}
 	        	\else
 				    \@author
 				\fi

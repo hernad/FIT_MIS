@@ -21,3 +21,9 @@ latex/seminar.pdf
 
 latex/seminar.toc
 .~*
+*.log
+*.aux
+*.bbl
+*.blg
+*.toc
+*.dvi
