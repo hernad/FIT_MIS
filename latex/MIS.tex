@@ -1,5 +1,9 @@
 \documentclass[times, utf8, seminar]{fit}
 \usepackage{booktabs}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{float}
 
 \begin{document}
 
@@ -7,7 +11,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {1.9.0}
+\verzija {1.9.5}
 
 \mentor{prof.dr Vanja Bevanda}
 
@@ -51,17 +55,20 @@ SCD slow changing dimension
   \item Type II
 \end{itemize}
 
-\begin{figure}
+Operativni podacii smješteni su u sljedeći relacijski model:
+
+\begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{img/F18_db.pdf}
-\caption{F18 operativni podaci prodaje}
+\caption{F18 transakcijski db model (relevantni dio)}
 \end{figure}
+
 
 \section{Pentaho}
 
 Pentaho: analysis multidimensional, reporting, dashboards (key performance indicators) \cite[str.~7]{pentaho32}.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{img/pentaho_arhitektura_eric.png}
 \caption{Pentaho arhitektura (\cite{web:eric})}
@@ -76,11 +83,22 @@ data mining weka ?
 
 \subsection{dimension table}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{img/F18_olap.pdf}
 \caption{OLAP schema}
 \end{figure}
+
+
+Mondrian schema:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{img/fit_olap_mondrian_schema}
+\caption{Mondrian schema OLAP 2 cube}
+\end{figure}
+
+
 
 
 \subsection{facts table}
@@ -99,6 +117,69 @@ Kolika je prodaja u određenom vremenskom periodu ?
 Kakav je odnos prodaje prodaje za određeni period tekuće godine u odnosu na predhodne ?
 
 Koji su efekti zapošljavanja radnika po pitanju ostvarnih prihoda ?
+
+
+\section{Analiza podataka}
+
+\lstset{ %
+   language=SQL,
+   basicstyle=\small,
+   numbers=left,
+   numbersep=5pt,
+   breaklines=true,
+   backgroundcolor=\color{yellow!15},
+   tabsize=2,
+   keywordstyle=\color{blue},
+   captionpos=b, 
+   frame=none
+}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/saiku_rpt_grupe}
+\caption{Pregled prodaje po grupama artikala}
+\end{figure}
+
+\lstset{caption={Pregled prodaje po grupama artikala}}
+\begin{lstlisting}
+SELECT
+NON EMPTY {Hierarchize({[Measures].[Vrijednost]})} 
+ON COLUMNS,
+  NON EMPTY {Hierarchize({[Artikli.artikli].[grupa].Members})} 
+ON ROWS
+FROM [FIT OLAP]
+WHERE {Hierarchize({[Vrijeme.vrijeme].[All Vrijeme.vrijemes]})}
+\end{lstlisting}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/saiku_rpt_region}
+\caption{Pregled prodaje po regionima, po godinama}
+\end{figure}
+
+\lstset{caption={Pregled prodaje po regionima}}
+\begin{lstlisting}
+SELECT
+  NON EMPTY {Hierarchize({[Measures].[Vrijednost]})} 
+ON COLUMNS,
+  NON EMPTY 
+    Hierarchize(
+      Union(CrossJoin([Vrijeme.vrijeme].[godina].Members, 
+      [Klijenti.klijenti].[region].Members), CrossJoin([Vrijeme.vrijeme].[godina].Members, 
+      [Klijenti.klijenti].[mjesto].Members))
+    ) 
+ON ROWS
+FROM [FIT OLAP]
+\end{lstlisting}
+
+
+
+\subsection{Redovi, Kolone, Filteri}
+
+
+
 
 
 \subsection{Ekspert}
