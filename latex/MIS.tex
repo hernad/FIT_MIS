@@ -15,7 +15,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {1.9.6}
+\verzija {1.9.7}
 
 \mentor{prof.dr Vanja Bevanda}
 
@@ -29,6 +29,26 @@
 
 \subsection{ETL}
 
+\subsection{Ulazni podaci - ERP podaci}
+
+\chapter{OLAP Case study: Analiza podataka `F18 knowhow' ERP-a}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/F18_erp.png}
+\caption{ERP aplikacija, F18 klijent}
+\end{figure}
+
+Operativni podaci `F18 knowhow' smješteni su u ovaj relacijski model:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/F18_db.pdf}
+\caption{F18 transakcijski db model (relevantni dio)}
+\end{figure}
+
+Podaci svake poslovne godine nalaze se u posebnoj PostgreSQL bazi podataka.
+
 Cleansing
 
 F18 `cleansing' podaci  (Dodatak \ref{chap:izvorni_kod}, olap\_cleansing `spreadsheet' dokument)
@@ -38,7 +58,7 @@ Klasificiranje izvornih podataka - šifrarnik artikala
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/clean_artikli.png}
-\caption{F18 klasificiranje šifarski sistem artikala}
+\caption{F18 klasificiranje - šifarski sistem artikala}
 \end{figure}
 
 
@@ -46,7 +66,7 @@ Klasificiranje izvornih podataka - šifrarnik artikala
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/clean_mjesto.png}
-\caption{F18 "cleansing" klijenti - mjesta/gradovi}
+\caption{`cleansing' F18 podataka -  klijenti - mjesta/gradovi}
 \end{figure}
 
 
@@ -57,7 +77,68 @@ Klasificiranje izvornih podataka - šifrarnik artikala
 \end{figure}
 
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/kettle_tr_init_dim_fpt.png}
+\caption{Inicijalizacija `dimension' i `facts' tabela}
+\end{figure}
 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/kettle_tr_ft_fakt.png}
+\caption{Generacija "ft\_fakt" `facts' tabele za određenu poslovnu godinu}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/kettle_tr_dim_par.png}
+\caption{Kettle transformacija: Generacija "dim\_par" i "dim\_g" `dimension' tabela za određenu poslovnu godinu}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/kettle_tr_dim_artikli.png}
+\caption{Kettle transformacija: Generacija "dim\_art" i "dim\_art\_gru" `dimension' tabela za određenu poslovnu godinu}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/kettle_tr_dt.png}
+\caption{Kettle transformacija: Generacija "dim\_dt" `dimension' tabele - vremenska dimenzija}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/kettle_job_run_all.png}
+\caption{Kettle job: inicijalizacija OLAP tabela, te generacija OLAP pdoataka za sve poslovne godine 1996-2011}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/kettle_job_run_godina.png}
+\caption{Kettle job: Generacija OLAP podataka iz F18 ERP izvora za jednu poslovnu godinu}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/nepoznato_artikli.png}
+\caption{Error reporting putem `spreadsheet' dokumenata - artikli za koje nisu definisani kodovi u olap\_cleansing tabelama}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/nepoznato_prodaja.png}
+\caption{Dokumenti prodaje u kojima su neispravni podaci potrebni za popunjavanje dimension tabela (datum, klijent, roba) }
+\end{figure}
+
+\chapter{Iza case study-ja ?}
+
+\section{Ne znam}
 
 \subsection{Mondrian}
 
@@ -87,13 +168,6 @@ SCD slow changing dimension
   \item Type II
 \end{itemize}
 
-Operativni podacii smješteni su u sljedeći relacijski model:
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{img/F18_db.pdf}
-\caption{F18 transakcijski db model (relevantni dio)}
-\end{figure}
 
 
 \section{Pentaho}
@@ -143,7 +217,6 @@ Mondrian schema:
 
 
 \subsection{ETL (Extract Transforn Load)}
-
 
 
 
@@ -212,18 +285,15 @@ FROM [FIT OLAP]
 \end{lstlisting}
 
 
-
 \subsection{Redovi, Kolone, Filteri}
 
-
+objasniti OLAP analysis ...
 
 
 
 \subsection{Ekspert}
 
 Poznavanje sadržaja i postojećih struktura podataka.
-
-
 
 
 
@@ -260,6 +330,7 @@ Rezime.
 \chapter{Bilješke autora}
 
 \begin{enumerate}
+  \item Prva verzija ovog seminarskog rada, neuspješno \url{https://github.com/hernad/MIS/raw/master/knowhowERP_OLAP_blog_style.pdf}
   \item FIT OLAP 2 cube: \url{http://redmine.bring.out.ba/issues/26711}
 \end{enumerate}
 
