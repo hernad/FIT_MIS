@@ -1,5 +1,7 @@
 \documentclass[times, utf8, seminar]{fit}
-\usepackage{booktabs}
+
+%\batchmode
+%\usepackage{booktabs}
 \usepackage{listings}
 \usepackage{longtable}
 \usepackage{xcolor}
@@ -28,6 +30,34 @@
 \subsection{ETL}
 
 Cleansing
+
+F18 `cleansing' podaci  (Dodatak \ref{chap:izvorni_kod}, olap\_cleansing `spreadsheet' dokument)
+
+Klasificiranje izvornih podataka - šifrarnik artikala
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/clean_artikli.png}
+\caption{F18 klasificiranje šifarski sistem artikala}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/clean_mjesto.png}
+\caption{F18 "cleansing" klijenti - mjesta/gradovi}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{img/clean_mjesto_region.png}
+\caption{F18 kodiranje regiona - klasifikacija mjesta/gradova}
+\end{figure}
+
+
+
 
 \subsection{Mondrian}
 
@@ -59,7 +89,7 @@ SCD slow changing dimension
 
 Operativni podacii smješteni su u sljedeći relacijski model:
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/F18_db.pdf}
 \caption{F18 transakcijski db model (relevantni dio)}
@@ -70,7 +100,7 @@ Operativni podacii smješteni su u sljedeći relacijski model:
 
 Pentaho: analysis multidimensional, reporting, dashboards (key performance indicators) \cite[str.~7]{pentaho32}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{img/pentaho_arhitektura_eric.png}
 \caption{Pentaho arhitektura (\cite{web:eric})}
@@ -217,19 +247,20 @@ Rezime.
 
 \chapter{Korišteni alati}
 
-\chapter{Lokacije izvornog koda}
-
+\chapter{Izvorni kod, dostupni resursi}
+\label{chap:izvorni_kod}
 
 \begin{enumerate}[labelindent=\parindent,leftmargin=*]
    \item OLAP mondrian, kettle transformacije i job-ovi, erviz modeli: \url{https://github.com/hernad/hello_bi}
    \item Latex kod ovog dokumenta \url{https://github.com/hernad/MIS/tree/master/latex}
+   \item olap\_cleansing `spreadsheet' dokument \url{https://github.com/hernad/hello_bi/raw/master/olap_cleansing.xls}
+   \item Saiku demo server online: \url{http://fit.bring.out.ba/olap/#}
 \end{enumerate}
 
 \chapter{Bilješke autora}
 
 \begin{enumerate}
   \item FIT OLAP 2 cube: \url{http://redmine.bring.out.ba/issues/26711}
-  \item Saiku demo server: \url{http://fit.bring.out.ba/olap/#}
 \end{enumerate}
 
 \end{document}
