@@ -4,6 +4,8 @@
 \usepackage{longtable}
 \usepackage{xcolor}
 \usepackage{float}
+\usepackage{enumitem}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -11,7 +13,7 @@
 
 \author{Ernad Husremović}
 \brindex{DL 2792}
-\verzija {1.9.5}
+\verzija {1.9.6}
 
 \mentor{prof.dr Vanja Bevanda}
 
@@ -76,10 +78,15 @@ Pentaho: analysis multidimensional, reporting, dashboards (key performance indic
 
 
 
-Spoon
+\section{Spoon}
 
-data mining weka ?
 
+
+\section{Data mining}
+
+Data mining Weka projekat: \cite{web:weka}, \cite{web:pentaho_weka}
+
+R statistički paket \cite{web:r}
 
 \subsection{dimension table}
 
@@ -210,9 +217,19 @@ Rezime.
 
 \chapter{Korišteni alati}
 
-\chapter{Pregled toga i toga}
+\chapter{Lokacije izvornog koda}
 
-...
 
+\begin{enumerate}[labelindent=\parindent,leftmargin=*]
+   \item OLAP mondrian, kettle transformacije i job-ovi, erviz modeli: \url{https://github.com/hernad/hello_bi}
+   \item Latex kod ovog dokumenta \url{https://github.com/hernad/MIS/tree/master/latex}
+\end{enumerate}
+
+\chapter{Bilješke autora}
+
+\begin{enumerate}
+  \item FIT OLAP 2 cube: \url{http://redmine.bring.out.ba/issues/26711}
+  \item Saiku demo server: \url{http://fit.bring.out.ba/olap/#}
+\end{enumerate}
 
 \end{document}

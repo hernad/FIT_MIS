@@ -305,7 +305,7 @@
 	        	  Student: {\itshape \@author, \@brindex} \\
 	        	  Mentor: {\itshape \@mentor} \\
                        \\
-                  ver: \@verzija
+                  \small{ver: \@verzija}
 	        	\else
 				    \@author
 				\fi
